@@ -1,4 +1,3 @@
-import { default } from '../.nuxt/components/nuxt-build-indicator.vue';
 <template>
   <Nuxt />
 </template>

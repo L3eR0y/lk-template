@@ -2,11 +2,17 @@ import {resolve} from 'path'
 
 export default {
   alias: {
-    // '~assets': resolve(__dirname, './assets'),
+    '~services': resolve(__dirname, './services'),
   },
   //Auto-import components path
   components: [
     '~/components',
-    { path: '~/services', extensions: ['vue'] }
-  ]
+    { 
+      path: '~/services',
+      pathPrefix:false,
+      prefix: 'srvs',
+      extensions: ['vue']
+    }
+  ],
+  ssr: false
 }

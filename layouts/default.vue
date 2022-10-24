@@ -9,8 +9,9 @@
         @click="onComponentClick(cmp)"
       ) {{ cmp }}
     .default-layout-wrapper__body-content
-      template(v-if="selected_component")
-        commponent(:is="selected_component")
+      Nuxt
+      //- template(v-if="selected_component")
+      //-   commponent(:is="selected_component")
   .default-layout-wrapper__footer
     h1 Footer
 </template>

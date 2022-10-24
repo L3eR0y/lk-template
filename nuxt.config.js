@@ -17,29 +17,23 @@ export default {
   //     }
   //   }
   // },
-  // modules: [
-  //   '~/modules/someSettings'
-  // ],
-  // plugins: [
-  //   '~/plugins/importStandAloneComponents.js'
-  // ],
   //Auto-import components path
   components: [
     '~/components',
-    // {
-    //   path: '~/services',
-    //   pattern: '*/*.vue',
-    //   prefix: 'srvs',
-    //   pathPrefix: false,
-    //   extensions: ['vue']
-    // },
-    // {
-    //   path: '~/services',
-    //   pattern: '*/components/*.vue',
-    //   pathPrefix: false,
-    //   prefix: 'cmp',
-    //   extensions: ['vue']
-    // }
+    {
+      path: '~/services',
+      pattern: '*/src/*.vue',
+      prefix: 'srvs',
+      pathPrefix: false,
+      extensions: ['vue']
+    },
+    {
+      path: '~/services',
+      pattern: '*/src/components/*/*.vue',
+      pathPrefix: false,
+      prefix: 'cmp',
+      extensions: ['vue']
+    }
   ],
   ssr: false
 }

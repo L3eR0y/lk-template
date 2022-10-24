@@ -4,30 +4,42 @@
     h1 Header
   .default-layout-wrapper__body
     .default-layout-wrapper__body-menu
+      cmp-button
       div(
         v-for="(cmp, index) in service_components" :key="index"
         @click="onComponentClick(cmp)"
       ) {{ cmp }}
     .default-layout-wrapper__body-content
       Nuxt
-      //- template(v-if="selected_component")
-      //-   commponent(:is="selected_component")
   .default-layout-wrapper__footer
     h1 Footer
 </template>
 
 <script>
-import Vue from "vue";
-import Component from "vue-class-component";
+// import Vue from "vue";
+// import Component from "vue-class-component";
 
-@Component
-export default class DefaultLayout extends Vue {
-  service_components = [];
-  selected_component = null;
+export default {
+  data() {
+    return {
+      service_components: [],
+      selected_component: null,
+    };
+  },
+  methods: {
+    onComponentClick(cmp) {
+      this.selected_component = cmp;
+    },
+  },
+  computed: {},
   created() {
+    console.log("Created", this);
     Object.keys(this.constructor?.options?.components || {}).reduce(
       (acc, key) => {
-        if (key.includes("Srvs") && !key.includes("Lazy")) {
+        if (
+          (key.includes("Srvs") || key.includes("Cmp")) &&
+          !key.includes("Lazy")
+        ) {
           acc.push(
             key
               .split(/(?=[A-Z])/)
@@ -39,12 +51,8 @@ export default class DefaultLayout extends Vue {
       },
       this.service_components
     );
-  }
-
-  onComponentClick(cmp) {
-    this.selected_component = cmp;
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>
